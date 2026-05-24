@@ -10,8 +10,9 @@ int main(void)
     adicionar_no(L, "012391232", "Coelho da Pascoa 2", "Isaac", 1234);
     adicionar_no(L, "012391233", "Coelho da Pascoa 3", "Isaac", 1234);
 
-    listar_livros(L);
-    
+//    listar_livros(L);
+    L_livro* livro= busca_livro(L, "012391234");
+    dados_livro(livro);
     return 0;
 }
 

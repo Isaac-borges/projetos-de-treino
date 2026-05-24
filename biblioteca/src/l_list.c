@@ -62,6 +62,12 @@ void adicionar_no(Lista* lista, char* ISBN, char* titulo, char* autor_nome, int 
     }
 }
 
+void dados_livro(L_livro* livro)
+{
+    if (livro != NULL) printf("Titulo: %s\nISBN: %s\nAutor(a): %s\nAno de Publicação: %d\n\n", livro->titulo, livro->ISBN, livro->autor_nome, livro->ano_publicacao);
+    else puts("Livro não encontrado!");
+}
+
 void listar_livros(Lista* lista)
 {   
     if (!lista_vazia(lista))
@@ -69,9 +75,36 @@ void listar_livros(Lista* lista)
         L_livro* observador = lista->inicio;
         while (observador != NULL)
         {
-            printf("Titulo: %s\nISBN: %s\nAutor(a): %s\nAno de Publicação: %d\n\n", observador->titulo, observador->ISBN, observador->autor_nome, observador->ano_publicacao);
+            dados_livro(observador);
             observador = observador->proximo;
         } 
     } else puts("Lista vazia!");
    
 }
+
+L_livro* busca_livro(Lista* lista, char* ISBN_procurado)
+{
+    if (!lista_vazia(lista))
+    {
+        L_livro* observador = lista->inicio;
+        while (observador != NULL) 
+        {
+            if (strcmp(observador->ISBN, ISBN_procurado) == 0) return observador;
+            else observador = observador->proximo;
+        }
+    }
+
+    return NULL;
+}
+/*
+void remover_livro(Lista* lista, char* ISBN)
+{
+    if (!lista_vazia(lista))
+    {
+        L_livro* anterior = NULL;
+        L_livro* atual = lista->inicio;
+
+        if 
+    }
+}
+*/
